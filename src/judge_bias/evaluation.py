@@ -10,8 +10,10 @@ Predictor = Callable[[PairExample], str]
 def position_flip_rate(examples: list[PairExample], predictor: Predictor) -> float:
     if not examples:
         raise ValueError("at least one example is required")
+    canonical = {"A": "B", "B": "A", "tie": "tie"}
     return sum(
-        predictor(example) != predictor(example.swapped()) for example in examples
+        predictor(example) != canonical[predictor(example.swapped())]
+        for example in examples
     ) / len(examples)
 
 
