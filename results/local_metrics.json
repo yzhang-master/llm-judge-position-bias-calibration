@@ -1,0 +1,96 @@
+{
+  "dataset": "/home/pus/Documents/github/llm-judge-position-bias-calibration/data/toy_preferences.jsonl",
+  "train_examples": 12,
+  "test_examples": 12,
+  "label_source": "manual toy labels by repository author",
+  "judge": {
+    "position_bias": 0.65,
+    "verbosity_bias": 0.25,
+    "self_preference_bias": 0.7,
+    "tie_threshold": 0.12
+  },
+  "calibration": {
+    "verbosity_penalty": 0.15,
+    "self_preference_penalty": 0.7,
+    "train_kappa": 1.0
+  },
+  "reference": [
+    "A",
+    "B",
+    "A",
+    "tie",
+    "B",
+    "A",
+    "tie",
+    "A",
+    "A",
+    "A",
+    "tie",
+    "A"
+  ],
+  "methods": {
+    "raw": {
+      "accuracy": 0.5833333333333334,
+      "cohen_kappa": 0.0,
+      "position_flip_rate": 0.8333333333333334,
+      "longer_answer_win_rate": 0.18181818181818182,
+      "self_preference_win_rate": 0.5714285714285714,
+      "predictions": [
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A"
+      ]
+    },
+    "swap_augmented": {
+      "accuracy": 0.75,
+      "cohen_kappa": 0.55,
+      "position_flip_rate": 0.0,
+      "longer_answer_win_rate": 0.18181818181818182,
+      "self_preference_win_rate": 0.42857142857142855,
+      "predictions": [
+        "A",
+        "B",
+        "A",
+        "B",
+        "B",
+        "A",
+        "A",
+        "A",
+        "A",
+        "A",
+        "B",
+        "A"
+      ]
+    },
+    "swap_plus_calibrated": {
+      "accuracy": 0.8333333333333334,
+      "cohen_kappa": 0.7142857142857144,
+      "position_flip_rate": 0.0,
+      "longer_answer_win_rate": 0.2,
+      "self_preference_win_rate": 0.3333333333333333,
+      "predictions": [
+        "A",
+        "B",
+        "A",
+        "B",
+        "B",
+        "A",
+        "tie",
+        "A",
+        "A",
+        "A",
+        "B",
+        "A"
+      ]
+    }
+  }
+}
